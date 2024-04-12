@@ -2,19 +2,24 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-trigger:- master
-pool:  
-vmImage: 'ubuntu-latest'
-steps:- 
-script: echo Hello, world!  
-displayName: 'Run a one-line script'
-//Settings
-- task: Bash@3 
- inputs:    
-filePath: './cicd-api.sh' //Generic Shell Script file
-//Settings
+
+trigger:
+- master
+
+pool: 
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- task: Bash@3
+  displayName: 'Run cicd-api.sh'
+  inputs:
+    filePath: './cicd-api.sh'
+
 - task: PublishTestResults@2  
-displayName: 'publish testsigma test results'  
-inputs:    
-testResultsFormat: 'Junit'// Test Result Format   
-testResultsFiles: '**/junit-report.xml' //Result File Type
+  displayName: 'publish testsigma test results'  
+  inputs:
+    testResultsFormat: 'JUnit' 
+    testResultsFiles: '**/junit-report.xml'
