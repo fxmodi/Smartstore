@@ -6,7 +6,7 @@ set -eo pipefail
 SCRIPT_DIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)
 
 ###########################################################################
-# CONFIGURATION
+# CONFIGURATION tst
 ###########################################################################
 
 BUILD_PROJECT_FILE="$SCRIPT_DIR/src/Smartstore.Build/Smartstore.Build/Smartstore.Build.csproj"
