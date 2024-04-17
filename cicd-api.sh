@@ -10,14 +10,14 @@
 #REPORT_FILE_PATH-->File path to save report Ex: <DIR_PATH>/report.xml, ./report.xml
 
 ##########################################################################################################################################################
-<# START USER INPUTS#>
+
 
 $TESTSIGMA_API_KEY="eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0MDdiYWU0MC01OWViLTRjZGMtOTIxNy03NTBkNWU4ZTFhYWMiLCJkb21haW4iOiJleHByZXNzcHJvcy5jb20iLCJ0ZW5hbnRJZCI6NjQ4MDd9.hfFzWdVUnNptwIyYXXUG1zVBr-JLsgnbZfUadFDSsCjAvv3op7Ie7zJCSqqJ-_y1lJihrh15Y2HUJLMBPLtD4Q"
 $TESTSIGMA_TEST_PLAN_ID="47"
 $REPORT_FILE_PATH="./junit-report.xml"
 $MAX_WAIT_TIME_FOR_SCRIPT_TO_EXIT=180
 
-<# END USER INPUTS #>
+
 
 $TESTSIGMA_TEST_PLAN_REST_URL="https://app.testsigma.com/api/v1/execution_results"
 $TESTSIGMA_JUNIT_REPORT_URL="https://app.testsigma.com/api/v1/reports/junit"
