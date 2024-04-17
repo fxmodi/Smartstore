@@ -22,4 +22,4 @@ steps:
   displayName: 'publish testsigma test results'  
   inputs:
     testResultsFormat: 'JUnit' 
-    testResultsFiles: '**/junit-report.pdf'
+    testResultsFiles: '**/junit-report.xml'
