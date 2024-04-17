@@ -25,25 +25,25 @@ TESTSIGMA_JUNIT_REPORT_URL="https://app.testsigma.com/api/v1/reports/junit"
 
 POLL_INTERVAL_FOR_RUN_STATUS=1
 NO_OF_POLLS=($MAX_WAIT_TIME_FOR_SCRIPT_TO_EXIT/$POLL_INTERVAL_FOR_RUN_STATUS)
-$SLEEP_TIME=($POLL_INTERVAL_FOR_RUN_STATUS * 60)
-$global:LOG_CONTENT=""
-$global:APP_URL=""
-$global:EXECUTION_STATUS=-1
-$RUN_ID=""
-$global:IS_TEST_RUN_COMPLETED=-1
-$PSDefaultParameterValues['Invoke-RestMethod:SkipHeaderValidation'] = $true
-$PSDefaultParameterValues['Invoke-WebRequest:SkipHeaderValidation'] = $true
-$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}" -f $TESTSIGMA_API_KEY)))
+SLEEP_TIME=($POLL_INTERVAL_FOR_RUN_STATUS * 60)
+global:LOG_CONTENT=""
+global:APP_URL=""
+global:EXECUTION_STATUS=-1
+RUN_ID=""
+global:IS_TEST_RUN_COMPLETED=-1
+PSDefaultParameterValues['Invoke-RestMethod:SkipHeaderValidation'] = $true
+PSDefaultParameterValues['Invoke-WebRequest:SkipHeaderValidation'] = $true
+base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}" -f $TESTSIGMA_API_KEY)))
 function get_status{
-    $global:RUN_RESPONSE=Invoke-RestMethod  $status_URL -Method GET -Headers @{Authorization=("Bearer {0}" -f $TESTSIGMA_API_KEY);'Accept'='application/json'} -ContentType "application/json"
+    global:RUN_RESPONSE=Invoke-RestMethod  $status_URL -Method GET -Headers @{Authorization=("Bearer {0}" -f $TESTSIGMA_API_KEY);'Accept'='application/json'} -ContentType "application/json"
 	
-    $global:EXECUTION_STATUS=$RUN_RESPONSE.status
-    $global:APP_URL=$RUN_RESPONSE.app_url
+    global:EXECUTION_STATUS=$RUN_RESPONSE.status
+    global:APP_URL=$RUN_RESPONSE.app_url
     Write-Host "Execution Status: $EXECUTION_STATUS"
 
 }
 function checkTestPlanRunStatus{
-  $global:IS_TEST_RUN_COMPLETED=0
+  global:IS_TEST_RUN_COMPLETED=0
   for($i=0; $i -le $NO_OF_POLLS;$i++){
     get_status
     Write-Host "Execution Status before going for wait: $EXECUTION_STATUS ,Status_message:"($RUN_RESPONSE.message)
